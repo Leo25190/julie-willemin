@@ -8,6 +8,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://aether-astro-theme.netlify.app/',
+  site: 'https://leo25190.github.io',
+  base: 'julie-willemin',
   integrations: [tailwind(), react(), sitemap()],
 });
