@@ -8,7 +8,6 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://leo25190.github.io',
-  base: 'julie-willemin',
+  site: 'https://julie-willemin.fr',  
   integrations: [tailwind(), react(), sitemap()],
 });
