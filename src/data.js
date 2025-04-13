@@ -82,6 +82,7 @@ export const workExperiences = [
 
 export const contactOptions = [
   { name: 'Tel : 0643233431', link: 'tel:+33643233431' },
+  { name: 'Mail : juliewillemin@outlook.fr', link: 'mailto:juliewillemin@outlook.fr' },
   { name: 'LinkedIN', link: 'https://www.linkedin.com/in/julie-willemin/' },
   { name: 'Instagram', link: 'https://www.instagram.com/julie_willemin/' },
 ];
