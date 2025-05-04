@@ -6,8 +6,11 @@ import react from '@astrojs/react';
 
 import sitemap from '@astrojs/sitemap';
 
+import netlify from '@astrojs/netlify';
+
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://julie-willemin.fr',  
+  site: 'https://julie-willemin.fr',
   integrations: [tailwind(), react(), sitemap()],
+  adapter: netlify(),
 });

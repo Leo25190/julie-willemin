@@ -1,0 +1,20 @@
+backend:
+  name: git-gateway # Nom du dépôt de test
+  branch: main # Branche par défaut pour le backend git-gateway
+  login: false
+
+media_folder: "src/assets/images" # Dossier où les images sont stockées
+public_folder: "src/assets/images" # Chemin d'accès aux images dans l'URL
+
+collections:
+  - name: "blog" # Utilisé dans les routes, par exemple, /admin/collections/blog
+    label: "Blog" # Utilisé dans l'UI
+    folder: "src/pages/blogs" # Chemin d'accès au dossier dans lequel les documents sont stockés
+    create: true # Permettre aux utilisateurs de créer de nouveaux documents dans cette collection
+    fields: # Les champs de chaque document, généralement en tête de page
+      - { label: "Layout", name: "layout", widget: "hidden", default: "../../layouts/BlogLayout.astro" }
+      - { label: "Description", name: "description", widget: "string", default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." }
+      - { label: "Publish Date", name: "pubDate", widget: "datetime", default: "Sep 12 2022" }
+      - { label: "Hero Image", name: "heroImage", widget: "image", default: "/post_img.webp" }
+      - { label: "Badge", name: "badge", widget: "string", default: "Demo badge" }
+      - { label: "Author", name: "author", widget: "string", default: "John Doe" }
