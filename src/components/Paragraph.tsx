@@ -9,14 +9,14 @@ export default function Paragraph({ text, maxLength = 400 }: { text: string; max
   const displayedText = expanded || !shouldTruncate ? text : text.slice(0, maxLength) + "…";
 
   return (
-    <div className="mt-5 md:mt-8 mb-5 text-slate-700 text-justify">
+    <div className="mt-5 md:mt-8 mb-5 text-justify">
       <p className="intro-bio leading-6 md:leading-7 md:text-xl">
         {displayedText}
       </p>
       {shouldTruncate && (
         <><button
           onClick={() => setExpanded(!expanded)}
-          className="text-slate-600 font-semibold hover:underline mt-2"
+          className="font-semibold hover:underline mt-2"
         >
             <div className="flex">
                 {expanded ? <>{ChevronUpIcon} Lire moins</> : <>{ChevronDownIcon} Lire Plus</>}

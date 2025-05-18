@@ -26,9 +26,8 @@ export const contactText = `Que ce soit pour échanger sur nos passions, discute
 // Links to put in the navigation bar as well as footer at bottom of the page
 
 export const navLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/#about' },
-  { name: 'Blog', href: '/#blog' },
+  { name: 'Accueil', href: '/' },
+  { name: 'À propos', href: '/#about' },
   { name: 'Contact', href: '/#contact' },
 ];
 

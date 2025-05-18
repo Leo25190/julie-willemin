@@ -14,7 +14,7 @@ const { navLinks, myName, myBio, selectedProjects } = Astro.props;
     <div class='introduction w-[100%] md:w-[60%] p-5'>
       <div class='intro-text-box'>
         <h2
-          class='intro-text leading-[4rem] md:leading-[8rem] font-bold text-[4rem] md:text-[5rem] lg:text-[6rem] xl:text-[7rem]'
+          class='text-primary intro-text text-brand leading-[4rem] md:leading-[8rem] font-bold text-[4rem] md:text-[5rem] lg:text-[6rem] xl:text-[7rem]'
         >
           {myName}
         </h2>
@@ -24,7 +24,7 @@ const { navLinks, myName, myBio, selectedProjects } = Astro.props;
     <div
       class='projects w-[100%] md:w-[30%] md:mr-5 justify-start flex flex-col gap-5'
     >
-      <h3 class='heading text-slate-600 uppercase font-semibold ml-4'>
+      <h3 class='text-secondary heading uppercase font-semibold ml-4'>
         Projets et Bénévolat
       </h3>
       <SelectedProjectBox projects={selectedProjects} />

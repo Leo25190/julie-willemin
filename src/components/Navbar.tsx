@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { navLogoText } from '../data';
+import ThemeToggle from './ThemeToggle';
 
 export default function Navbar({ navLinks }) {
   const [isToggled, setIsToggled] = useState(false);
-  const subMenuLinkStyles = `text-xl text-slate-700 hover:text-slate-950 transition-all duration-[0.3s]`;
-  const MenuLinkStyles = `text-lg text-slate-700 hover:text-slate-950 transition-all duration-[0.3s]`;
+  const subMenuLinkStyles = `text-xl transition-all duration-[0.3s]`;
+  const MenuLinkStyles = `text-lg transition-all duration-[0.3s]`;
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -22,19 +23,22 @@ export default function Navbar({ navLinks }) {
     show: { opacity: 1, x: 0 },
   };
   return (
-    <nav className='fixed bg-white top-0 left-0 w-full'>
+    <nav className='bg-background fixed top-0 left-0 w-full z-50'>
       <div className='flex justify-between items-center p-5'>
         <a href='/' className='logo text-md font-bold'>
           {navLogoText ? navLogoText : 'julie-willemin'}
         </a>
-        <div className='links'>
-          <ul className='hidden md:flex items-center gap-3'>
-            {navLinks.map((link) => (
-              <li key={link.name} className={MenuLinkStyles}>
-                <a href={`${link.href}`}>{link.name}</a>
-              </li>
-            ))}
-          </ul>
+        <div className='flex items-center gap-5'>
+          <div className='links'>
+            <ul className='hidden md:flex items-center gap-3'>
+              {navLinks.map((link) => (
+                <li key={link.name} className={MenuLinkStyles}>
+                  <a href={`${link.href}`}>{link.name}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <ThemeToggle />
         </div>
         <motion.div
           className={`flex flex-col md:hidden gap-[3.5px] cursor-pointer z-50 ${

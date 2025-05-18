@@ -13,13 +13,13 @@ const { aboutMe, skills, workExperiences } = Astro.props;
     <div class='box introduction w-[100%] md:w-[60%] p-5'>
       <div class='box-text'>
         <h3
-          class='leading-[4rem] md:leading-[8rem] font-bold text-[4rem] md:text-[6rem]'
+          class='text-primary leading-[4rem] md:leading-[8rem] font-bold text-[4rem] md:text-[6rem]'
         >
           A propos de moi
         </h3>
         <Paragraph client:load text={aboutMe} />
         <h3
-          class='leading-[4rem] md:leading-[8rem] font-bold text-[2rem] md:text-[4rem] ml-2 md:ml-4'
+          class='text-primary leading-[4rem] md:leading-[8rem] font-bold text-[2rem] md:text-[4rem] ml-2 md:ml-4'
         >
           Compétences
         </h3>
@@ -29,8 +29,8 @@ const { aboutMe, skills, workExperiences } = Astro.props;
     <div
       class='info-box w-[100%] md:w-[30%] md:mr-5 justify-start flex flex-col gap-5'
     >
-      <h3 class='heading text-slate-600 uppercase font-semibold ml-4'>
-        Work Experience
+      <h3 class='text-secondary heading uppercase font-semibold ml-4'>
+        Expériences Professionnelles
       </h3>
       <WorkExperienceBox workExperiences={workExperiences} />
     </div>
