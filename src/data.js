@@ -10,8 +10,7 @@ En clair, j’aborde chaque nouvelle expérience comme une scène à explorer, u
 
 // about me text for about section
 
-export const aboutMe =
-`Après un baccalauréat général, je me suis inscrite à l’ECM de Belfort, une école de Commerce et Management. J’y ai suivi une Licence de Droit, Économie, Gestion, avec un parcours en Commerce, Vente, Marketing. Ce qui m’a permis d’effectuer un stage en banque et une alternance en tant que conseillère de vente. De plus, j’ai acquis de nombreuses compétences en stratégie d’entreprise, en gestion financière, en négociation ou encore en communication. Cependant, je n’y ai pas trouvé ma voie, car la passion n’était pas là.
+export const aboutMe = `Après un baccalauréat général, je me suis inscrite à l’ECM de Belfort, une école de Commerce et Management. J’y ai suivi une Licence de Droit, Économie, Gestion, avec un parcours en Commerce, Vente, Marketing. Ce qui m’a permis d’effectuer un stage en banque et une alternance en tant que conseillère de vente. De plus, j’ai acquis de nombreuses compétences en stratégie d’entreprise, en gestion financière, en négociation ou encore en communication. Cependant, je n’y ai pas trouvé ma voie, car la passion n’était pas là.
 Pour poursuivre mes études, j’ai donc choisi l’ICART, une école de médiation culturelle, disposant de cinq campus en France. L’ICART propose un MBA en Ingénierie Culturelle et Management, permettant de se professionnaliser dans le spectacle vivant, la musique, l’art/le patrimoine ou encore le cinéma. Mon projet de quatrième année était l’organisation d’un talent show mêlant danse, chant et théâtre. Celui-ci m’a permis de réaliser une vraie première expérience enrichissante sur le terrain, en amont de l’événement et en live : production, programmation, diffusion, communication... J’ai adoré ! Par ailleurs, j’étais récemment en stage en tant qu’assistante de production, à L’échangeur - CDCN, à Château-Thierry. J’accueillais les artistes en résidence, je rédigeais des conventions, des contrats, à l’occasion d’un festival de danse, je participais à la programmation de l’édition suivante et surtout j’apprenais de nombreuses choses sur la coordination d’événements, la logistique et sur le secteur culturel en général.
 J’aspire à m’exercer davantage dans ce secteur qui m’anime, en découvrant d’autres missions, d’autres métiers et d’autres structures culturelles. Je souhaite ouvrir mon esprit et m’ancrer pleinement dans cet environnement où la créativité et l’organisation se rencontrent pour donner vie à des moments magiques.`;
 
@@ -58,22 +57,16 @@ export const skills = [
 
 export const workExperiences = [
   {
-    organisationName: 'company 1',
-    position: 'Intern',
-    date: '2022 - 2023',
-    info: ['I worked on this', 'I showed this skills'],
-  },
-  {
-    organisationName: 'company 2',
-    position: 'UI/UX Designer',
-    date: '2024 - present',
-    info: ['I worked on this', 'I showed this skills'],
-  },
-  {
-    organisationName: 'company 3',
-    position: 'React Developer',
-    date: '2022 - 2023',
-    info: ['I worked on this', 'I showed this skills'],
+    organisationName: 'L’échangeur-CDCN',
+    position: 'Stage - Assistante de production',
+    date: '01/2025 - 07/2025',
+    info: [
+      'Rédaction de contrats et conventions',
+      'Accueil et logistique pour artistes',
+      'Organisation du festival Kidanse',
+      'Gestion de la billetterie et des clients',
+      'Participation à la programmation 2026',
+    ],
   },
 ];
 
@@ -81,7 +74,10 @@ export const workExperiences = [
 
 export const contactOptions = [
   { name: 'Tel : 0643233431', link: 'tel:+33643233431' },
-  { name: 'Mail : juliewillemin@outlook.fr', link: 'mailto:juliewillemin@outlook.fr' },
+  {
+    name: 'Mail : juliewillemin@outlook.fr',
+    link: 'mailto:juliewillemin@outlook.fr',
+  },
   { name: 'LinkedIN', link: 'https://www.linkedin.com/in/julie-willemin/' },
   { name: 'Instagram', link: 'https://www.instagram.com/julie_willemin/' },
 ];
