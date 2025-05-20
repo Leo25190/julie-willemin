@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Moon, Sun } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 export default function ThemeToggle() {
   const [isDark, setIsDark] = useState(false);
@@ -9,7 +9,9 @@ export default function ThemeToggle() {
   // initialisation au chargement
   useEffect(() => {
     const stored = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const prefersDark = window.matchMedia(
+      '(prefers-color-scheme: dark)'
+    ).matches;
     const activeDark = stored === 'dark' || (!stored && prefersDark);
     setIsDark(activeDark);
     document.documentElement.classList.toggle('dark', activeDark);
@@ -51,7 +53,7 @@ export default function ThemeToggle() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              <Sun className="w-6 h-6 text-yellow-400" />
+              <Sun className="w-6 h-6 text-primary" />
             </motion.div>
           ) : (
             <motion.div
@@ -60,7 +62,7 @@ export default function ThemeToggle() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              <Moon className="w-6 h-6 text-gray-800" />
+              <Moon className="w-6 h-6 text-primary" />
             </motion.div>
           )}
         </AnimatePresence>

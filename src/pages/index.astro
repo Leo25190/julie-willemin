@@ -1,21 +1,21 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
-import {
-  myName,
-  myBio,
-  navLinks,
-  selectedProjects,
-  aboutMe,
-  skills,
-  workExperiences,
-  blogText,
-  contactText,
-  contactOptions,
-} from '../data';
-import AboutSection from '../components/sections/AboutSection.astro';
-import MainSection from '../components/sections/MainSection.astro';
 import Footer from '../components/Footer.astro';
+import AboutSection from '../components/sections/AboutSection.astro';
 import ContactSection from '../components/sections/ContactSection.astro';
+import MainSection from '../components/sections/MainSection.astro';
+import {
+aboutMe,
+contactOptions,
+contactText,
+myBio,
+myName,
+navLinks,
+selectedProjects,
+skills,
+workExperiences,
+} from '../data';
+import MainLayout from '../layouts/MainLayout.astro';
+import '../styles/app.css';
 ---
 
 <MainLayout>

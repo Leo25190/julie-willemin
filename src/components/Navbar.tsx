@@ -6,7 +6,7 @@ import ThemeToggle from './ThemeToggle';
 export default function Navbar({ navLinks }) {
   const [isToggled, setIsToggled] = useState(false);
   const subMenuLinkStyles = `text-xl transition-all duration-[0.3s]`;
-  const MenuLinkStyles = `text-lg transition-all duration-[0.3s]`;
+  const MenuLinkStyles = `text-lg transition-all duration-[0.3s] hover:text-primary`;
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -23,10 +23,14 @@ export default function Navbar({ navLinks }) {
     show: { opacity: 1, x: 0 },
   };
   return (
-    <nav className='bg-background fixed top-0 left-0 w-full z-50'>
-      <div className='flex justify-between items-center p-5'>
-        <a href='/' className='logo text-md font-bold'>
+    <nav
+      style={{ backgroundColor: 'var(--background)' }}
+      className='fixed top-0 left-0 w-full'
+    >
+      <div className='flex justify-between items-center p-5 z-'>
+        <a href='/' className='logo text-md font-bold relative group'>
           {navLogoText ? navLogoText : 'julie-willemin'}
+          <span className='absolute left-0 bottom-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full'></span>
         </a>
         <div className='flex items-center gap-5'>
           <div className='links'>
@@ -52,11 +56,11 @@ export default function Navbar({ navLinks }) {
               translateY: isToggled ? 7 : 0,
               width: isToggled ? 30 : 30,
             }}
-            className='w-[30px] h-[2px] bg-black'
+            className='w-[30px] h-[2px] bg-backgroud'
           />
           <motion.span
             animate={{ opacity: isToggled ? 0 : 1, width: isToggled ? 0 : 25 }}
-            className='w-[20px] h-[2px] bg-black'
+            className='w-[20px] h-[2px] bg-backgroud'
           />
           <motion.span
             animate={{
@@ -64,7 +68,7 @@ export default function Navbar({ navLinks }) {
               translateY: isToggled ? -5 : 0,
               width: isToggled ? 30 : 15,
             }}
-            className='w-[15px] h-[2px] bg-black'
+            className='w-[15px] h-[2px] bg-backgroud'
           />
         </motion.div>
       </div>
