@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Moon, Sun } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-export default function ThemeToggle() {
+export default function ThemeToggle({ className }: { className?: string }) {
   const [isDark, setIsDark] = useState(false);
   const [rotating, setRotating] = useState(false);
 
@@ -37,32 +37,32 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 transition-colors duration-300"
-      aria-label="Changer le thème"
+      className={`p-2 transition-colors duration-300 ${className}`}
+      aria-label='Changer le thème'
     >
       <motion.div
         animate={{ rotate: rotating ? 180 : 0 }}
         transition={{ duration: 0.5 }}
-        className="w-6 h-6"
+        className='w-6 h-6'
       >
-        <AnimatePresence mode="wait" initial={false}>
+        <AnimatePresence mode='wait' initial={false}>
           {isDark ? (
             <motion.div
-              key="sun"
+              key='sun'
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              <Sun className="w-6 h-6 text-primary" />
+              <Sun className='w-6 h-6 text-primary' />
             </motion.div>
           ) : (
             <motion.div
-              key="moon"
+              key='moon'
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              <Moon className="w-6 h-6 text-primary" />
+              <Moon className='w-6 h-6 text-primary' />
             </motion.div>
           )}
         </AnimatePresence>

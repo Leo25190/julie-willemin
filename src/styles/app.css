@@ -4,25 +4,27 @@
 
 /* Variables CSS pour thèmes */
 :root {
-  --color-primary: #FF954F; /* bleu clair */
-  --color-secondary: #FF6AB0;
-  --color-button:  #ffbf94;
-  --color-button-hover: #FF6AB0;
-  --background: #fef7ff;
+  --color-primary: #ff954f; /* bleu clair */
+  --color-secondary: #ff6ab0;
+  --color-button: #ffbf94;
+  --color-button-hover: #ff6ab0;
+  --color-background: #fef7ff;
   --text: #30324b;
 }
 
 .dark {
   --color-primary: #ff76b6;
   --color-secondary: #ff9853;
-  --color-button:  #ff9955;
-  --color-button-hover: #FF6AB0;
-  --background: #12111a;
+  --color-button: #ff9955;
+  --color-button-hover: #ff6ab0;
+  --color-background: #12111a;
   --text: #e7e6de;
 }
 
 body {
-  background-color: var(--background);
+  background-color: var(--color-background);
   color: var(--text);
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
