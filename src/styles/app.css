@@ -8,7 +8,7 @@
   --color-secondary: #ff6ab0;
   --color-button: #ffbf94;
   --color-button-hover: #ff6ab0;
-  --color-background: #fef7ff;
+  --color-background: 254 247 255;
   --text: #30324b;
 }
 
@@ -17,12 +17,12 @@
   --color-secondary: #ff9853;
   --color-button: #ff9955;
   --color-button-hover: #ff6ab0;
-  --color-background: #12111a;
+  --color-background: 18 17 26;
   --text: #e7e6de;
 }
 
 body {
-  background-color: var(--color-background);
+  background-color: rgb(var(--color-background));
   color: var(--text);
   transition:
     background-color 0.3s,

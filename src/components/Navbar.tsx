@@ -23,7 +23,7 @@ export default function Navbar({ navLinks }) {
     show: { opacity: 1, x: 0 },
   };
   return (
-    <nav className='fixed top-0 left-0 w-full bg-background'>
+    <nav className='fixed top-0 left-0 w-full bg-background bg-opacity-80 backdrop-blur-xl'>
       <div className='flex justify-between items-center p-5 z-'>
         <a href='/' className='logo text-md font-bold relative group'>
           {navLogoText ? navLogoText : 'julie-willemin'}

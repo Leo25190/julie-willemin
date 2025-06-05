@@ -9,7 +9,7 @@ export default {
         secondary: 'var(--color-secondary)',
         button: 'var(--color-button)',
         buttonHover: 'var(--color-button-hover)',
-        background: 'var(--color-background)',
+        background: 'rgb(var(--color-background) / <alpha-value>)',
         text: 'var(--text)',
       },
     },
