@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content';
+import Footer from '../components/Footer.astro';
+import GalleryGrid from '../components/GalleryGrid';
+import Navbar from '../components/Navbar';
+import { navLinks } from '../data';
+import MainLayout from '../layouts/MainLayout.astro';
+
+// Récupérer toutes les images de la collection
+const allImages = await getCollection('gallery');
+
+// Trier par date (plus récent en premier)
+const sortedImages = allImages.sort((a, b) => 
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const images = sortedImages.map(image => ({
+  title: image.data.title,
+  description: image.data.description,
+  image: image.data.image,
+  alt: image.data.alt,
+  category: image.data.category,
+  date: image.data.date,
+}));
+---
+
+<MainLayout 
+  title="Galerie - Julie Willemin"
+  description="Découvrez ma galerie photo avec mes expériences culturelles, voyages et passions"
+>
+  <Navbar navLinks={navLinks} client:load />
+  
+  <main class="mt-20 min-h-screen bg-background">
+    <div class="container mx-auto px-4 py-8">
+      <header class="text-center mb-12">
+        <h1 class="text-primary font-bold text-4xl md:text-6xl mb-4">
+          Ma Galerie
+        </h1>
+        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          Explorez mes expériences dans le monde culturel, mes voyages, mes passions pour la danse 
+          et les moments qui m'inspirent au quotidien.
+        </p>
+      </header>
+
+      <GalleryGrid client:load images={images} />
+
+      {images.length === 0 && (
+        <div class="text-center py-16">
+          <h2 class="text-2xl font-semibold mb-4">Galerie en construction</h2>
+          <p class="text-gray-600 dark:text-gray-300">
+            Les images seront bientôt ajoutées. Revenez nous voir !
+          </p>
+        </div>
+      )}
+    </div>
+  </main>
+
+  <Footer navLinks={navLinks} />
+</MainLayout>

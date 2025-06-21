@@ -27,6 +27,7 @@ export const contactText = `Que ce soit pour échanger sur nos passions, discute
 export const navLinks = [
   { name: 'Accueil', href: '/' },
   { name: 'À propos', href: '/#about' },
+  { name: 'Galerie', href: '/galery' },
   { name: 'Contact', href: '/#contact' },
 ];
 

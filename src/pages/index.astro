@@ -1,7 +1,9 @@
 ---
+import { getCollection } from 'astro:content';
 import Footer from '../components/Footer.astro';
 import AboutSection from '../components/sections/AboutSection.astro';
 import ContactSection from '../components/sections/ContactSection.astro';
+import GallerySection from '../components/sections/GallerySection.astro';
 import MainSection from '../components/sections/MainSection.astro';
 import {
 aboutMe,
@@ -16,6 +18,19 @@ workExperiences,
 } from '../data';
 import MainLayout from '../layouts/MainLayout.astro';
 import '../styles/app.css';
+
+// Importing the gallery images from the collection
+const allImages = await getCollection('gallery');
+const featuredImages = allImages
+  .filter(image => image.data.featured)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .map(image => ({
+    title: image.data.title,
+    description: image.data.description,
+    image: image.data.image,
+    alt: image.data.alt,
+    category: image.data.category,
+  }));
 ---
 
 <MainLayout>
@@ -30,6 +45,9 @@ import '../styles/app.css';
     skills={skills}
     workExperiences={workExperiences}
   />
+  {featuredImages.length > 0 && (
+    <GallerySection featuredImages={featuredImages} />
+  )}
   <ContactSection contactText={contactText} contactOptions={contactOptions} />
   <Footer navLinks={navLinks} />
 </MainLayout>
