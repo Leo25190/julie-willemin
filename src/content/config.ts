@@ -7,7 +7,18 @@ const galleryCollection = defineCollection({
     description: z.string().optional(),
     image: z.string(),
     featured: z.boolean().default(false),
-    date: z.date(),
+    date: z
+      .string()
+      .refine(
+        (date) => {
+          // Valide que la string peut être convertie en date
+          return !isNaN(Date.parse(date));
+        },
+        {
+          message: 'Date must be a valid date string (YYYY-MM-DD)',
+        }
+      )
+      .transform((str) => new Date(str)),
     category: z.string().optional(),
     alt: z.string().optional(),
   }),

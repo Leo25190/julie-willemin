@@ -121,7 +121,7 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
       {/* Bouton voir plus */}
       <div className='text-center mt-6'>
         <a
-          href='/galery'
+          href='/gallery'
           className='inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-full hover:bg-secondary transition-colors duration-300 font-medium'
         >
           <Eye className='w-5 h-5' />

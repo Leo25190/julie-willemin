@@ -5,14 +5,18 @@ export const myName = 'Julie Willemin'; // For name in main intro text
 export const navLogoText = 'Julie Willemin'; // navbar left-most logo text
 // bio for main section
 
-export const myBio = `Ma sensibilité m’a guidé vers le secteur culturel. J’aime aller voir des spectacles de danse, des pièces de théâtre, des concerts ou encore des comédies musicales. Les émotions que je ressens lors de ces moments d’émerveillement sont indescriptibles. Pour continuer sur mes passions, j’aime particulièrement les animaux et surtout les félins. Du chat domestique au tigre, tous me fascinent. J’ai d’ailleurs une femelle Maine Coon à la maison, que j’aime infiniment. Côté sport, je suis naturellement attirée par la danse. J’ai pratiqué pendant douze ans le Modern Jazz, puis j’ai fait deux ans de Pole Dance et un an de Contemporain. La danse est pour moi un moyen d’expression, qui m’a permis d’enlever un peu de timidité et de rajouter un peu de confiance. J’ai également fait pas mal de natation et désormais je pratique la course à pied. Chaque course est un nouvel objectif à relever ! Enfin, je dirais que ma dernière passion est de voyager. Les pays asiatiques m’attirent pour leur culture et les pays scandinaves pour leur nature. Côté personnalité, la rigueur et l’investissement sont des mots qui me reflètent. Que ce soit dans la vie privée ou professionnelle, j’offre chaleureusement une part de moi-même. Mes amies me comparent souvent à un petit soleil, car mon énergie et mon sourire leur font du bien. Enfin, ma couleur préférée est le bleu, sûrement parce que je suis une adepte des rêves et des contes de fées. Mon âme d’enfant me permet ainsi de faire des vœux, que j’essaie bien évidemment d’exaucer avec détermination.
-En clair, j’aborde chaque nouvelle expérience comme une scène à explorer, un voyage à entreprendre ou un défi à relever. Si vous cherchez une personne prête à s’investir avec enthousiasme et sérieux, alors rencontrons-nous. Je serais ravie d’écrire avec vous le prochain chapitre de mon parcours !`;
+export const myBio = `Moi, c’est Julie. J’aime assister à des spectacles, des concerts et des comédies musicales. J’adore les animaux, en particulier les félins : du chat domestique au tigre, tous me fascinent.
+Côté sport, je danse depuis quinze ans. La danse est pour moi un véritable moyen d’expression, qui m’a permis de gagner en confiance et d’atténuer ma timidité. J’ai aussi beaucoup pratiqué la natation, et aujourd’hui, je me suis mise à la course à pied.
+Une autre de mes passions, c’est le voyage. Les pays asiatiques m’attirent pour leur richesse culturelle, et les pays scandinaves pour leur nature apaisante.
+Mes amies me comparent souvent à un petit soleil, car mon énergie et mon sourire leur font du bien.
+Et pour finir, ma couleur préférée est le bleu, sans doute parce que je suis une grande rêveuse, un peu comme dans les contes de fées.
+`;
 
 // about me text for about section
 
-export const aboutMe = `Après un baccalauréat général, je me suis inscrite à l’ECM de Belfort, une école de Commerce et Management. J’y ai suivi une Licence de Droit, Économie, Gestion, avec un parcours en Commerce, Vente, Marketing. Ce qui m’a permis d’effectuer un stage en banque et une alternance en tant que conseillère de vente. De plus, j’ai acquis de nombreuses compétences en stratégie d’entreprise, en gestion financière, en négociation ou encore en communication. Cependant, je n’y ai pas trouvé ma voie, car la passion n’était pas là.
-Pour poursuivre mes études, j’ai donc choisi l’ICART, une école de médiation culturelle, disposant de cinq campus en France. L’ICART propose un MBA en Ingénierie Culturelle et Management, permettant de se professionnaliser dans le spectacle vivant, la musique, l’art/le patrimoine ou encore le cinéma. Mon projet de quatrième année était l’organisation d’un talent show mêlant danse, chant et théâtre. Celui-ci m’a permis de réaliser une vraie première expérience enrichissante sur le terrain, en amont de l’événement et en live : production, programmation, diffusion, communication... J’ai adoré ! Par ailleurs, j’étais récemment en stage en tant qu’assistante de production, à L’échangeur - CDCN, à Château-Thierry. J’accueillais les artistes en résidence, je rédigeais des conventions, des contrats, à l’occasion d’un festival de danse, je participais à la programmation de l’édition suivante et surtout j’apprenais de nombreuses choses sur la coordination d’événements, la logistique et sur le secteur culturel en général.
-J’aspire à m’exercer davantage dans ce secteur qui m’anime, en découvrant d’autres missions, d’autres métiers et d’autres structures culturelles. Je souhaite ouvrir mon esprit et m’ancrer pleinement dans cet environnement où la créativité et l’organisation se rencontrent pour donner vie à des moments magiques.`;
+export const aboutMe = `Après une licence de Droit, Économie, Gestion à l’ECM, où j’ai acquis des compétences en communication et en gestion financière, j’ai choisi de me réorienter par passion vers le secteur culturel.
+Je poursuis désormais un cursus d’ingénierie culturelle, avec une spécialisation en spectacle vivant à l’ICART. J’apprécie particulièrement les projets concrets auxquels l’école nous confronte, ainsi que les stages que nous devons effectuer. Ils nous permettent de développer les compétences nécessaires à la création et à la réalisation d’un événement culturel. Je souhaite m’ancrer pleinement dans cet environnement où la créativité et l’organisation se rencontrent pour donner vie à des moments magiques.
+`;
 
 // A sub text for writing/blog section
 export const blogText = `J’ai créé cet espace pour vous partager ce qui m’inspire. SPECTACLE VIVANT, MUSIQUE, ART, CINÉMA, en passant par mes VOYAGES, mes ACTIVITÉS SPORTIVES et mon amour inconditionnel pour les ANIMAUX… Ce blog est un rideau ouvert sur mon univers.
@@ -27,7 +31,7 @@ export const contactText = `Que ce soit pour échanger sur nos passions, discute
 export const navLinks = [
   { name: 'Accueil', href: '/' },
   { name: 'À propos', href: '/#about' },
-  { name: 'Galerie', href: '/galery' },
+  { name: 'Galerie', href: '/gallery' },
   { name: 'Contact', href: '/#contact' },
 ];
 

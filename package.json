@@ -7,7 +7,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "optimize-images": "node scripts/optimize-images.js",
+    "build:images": "npm run optimize-images && npm run build"
   },
   "dependencies": {
     "@astrojs/react": "^3.6.2",
@@ -17,7 +19,7 @@
     "@lucide/astro": "^0.487.0",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
-    "astro": "^4.16.5",
+    "astro": "^5.10.0",
     "astro-icon": "^1.1.1",
     "framer-motion": "^11.11.9",
     "lucide-react": "^0.511.0",
@@ -29,6 +31,7 @@
     "eslint": "^9.27.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.4.0",
-    "prettier": "^3.5.3"
+    "prettier": "^3.5.3",
+    "sharp": "^0.32.6"
   }
 }
