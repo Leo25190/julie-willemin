@@ -107,18 +107,28 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                index === currentIndex
-                  ? 'bg-primary scale-110'
-                  : 'bg-gray-300 hover:bg-gray-400'
-              }`}
+              className={`
+                w-3 h-3 rounded-full transition-all duration-200
+                ${index === currentIndex ? 'bg-primary scale-110' : 'bg-gray-300 hover:bg-gray-400'}
+                hidden sm:inline-block
+              `}
               aria-label={`Aller à l'image ${index + 1}`}
+            />
+          ))}
+          {/* Mobile dots (not buttons) */}
+          {images.map((_, index) => (
+            <span
+              key={`dot-${index}`}
+              className={`
+                w-3 h-3 rounded-full mx-0.5
+                ${index === currentIndex ? 'bg-primary' : 'bg-gray-300'}
+                inline-block sm:hidden
+              `}
+              aria-label={`Indicateur image ${index + 1}`}
             />
           ))}
         </div>
       )}
-
-      {/* Bouton voir plus */}
       <div className='text-center mt-6'>
         <a
           href='/gallery'
