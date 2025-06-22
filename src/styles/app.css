@@ -4,11 +4,12 @@
 
 /* Variables CSS pour thèmes */
 :root {
-  --color-primary: #ff954f; /* bleu clair */
-  --color-secondary: #ff6ab0;
+  --color-primary: #156064; /* bleu clair */
+  --color-secondary: #7b2d5e;
   --color-button: #ffbf94;
   --color-button-hover: #ff6ab0;
-  --color-background: 254 247 255;
+  --color-background: 231 231 238;
+  --color-border: #b7b7cc;
   --text: #30324b;
 }
 

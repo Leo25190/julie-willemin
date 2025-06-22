@@ -12,6 +12,9 @@ export default {
         background: 'rgb(var(--color-background) / <alpha-value>)',
         text: 'var(--text)',
       },
+      borderColor: {
+        DEFAULT: 'var(--color-border)',
+      },
     },
   },
   plugins: [],
