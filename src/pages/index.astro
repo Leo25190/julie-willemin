@@ -1,36 +1,17 @@
 ---
-import { getCollection } from 'astro:content';
 import Footer from '../components/Footer.astro';
 import AboutSection from '../components/sections/AboutSection.astro';
 import ContactSection from '../components/sections/ContactSection.astro';
 import GallerySection from '../components/sections/GallerySection.astro';
 import MainSection from '../components/sections/MainSection.astro';
-import {
-aboutMe,
-contactOptions,
-contactText,
-myBio,
-myName,
-navLinks,
-selectedProjects,
-skills,
-workExperiences,
-} from '../data';
+import { aboutMe, contactOptions, contactText, myBio, myName, navLinks, selectedProjects, skills, workExperiences } from '../data';
 import MainLayout from '../layouts/MainLayout.astro';
+import { notionService } from '../services/notion';
 import '../styles/app.css';
 
-// Importing the gallery images from the collection
-const allImages = await getCollection('gallery');
-const featuredImages = allImages
-  .filter(image => image.data.featured)
-  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
-  .map(image => ({
-    title: image.data.title,
-    description: image.data.description,
-    image: image.data.image,
-    alt: image.data.alt,
-    category: image.data.category,
-  }));
+// Get featured images from Notion
+const databaseId = import.meta.env.NOTION_GALLERY_DATABASE_ID;
+const featuredImages = await notionService.getFeaturedImages(databaseId);
 ---
 
 <MainLayout>

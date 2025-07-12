@@ -1,30 +1,32 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
-interface Image {
+interface GalleryImage {
+  id: string;
   title: string;
-  description?: string;
+  description: string;
   image: string;
-  alt?: string;
-  category?: string;
-  date: Date;
+  alt: string;
+  category: string;
+  date: string;
+  featured: boolean;
 }
 
 interface GalleryGridProps {
-  images: Image[];
+  images: GalleryImage[];
 }
 
 export default function GalleryGrid({ images }: GalleryGridProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [selectedImage, setSelectedImage] = useState<Image | null>(null);
+  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
-  // Obtenir toutes les catégories uniques
+  // Get all unique categories
   const categories = [
     'all',
     ...new Set(images.map((img) => img.category).filter(Boolean)),
   ];
 
-  // Filtrer les images par catégorie
+  // Filter images by category
   const filteredImages =
     selectedCategory === 'all'
       ? images
@@ -47,7 +49,7 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
 
   return (
     <div className='w-full'>
-      {/* Filtres de catégorie */}
+      {/* Category filters */}
       {categories.length > 1 && (
         <div className='flex flex-wrap justify-center gap-2 mb-8'>
           {categories.map((category) => (
@@ -60,29 +62,29 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
                   : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
             >
-              {category === 'all' ? 'Toutes' : category}
+              {category === 'all' ? 'All' : category}
             </button>
           ))}
         </div>
       )}
 
-      {/* Grille d'images */}
+      {/* Image grid */}
       <motion.div
         variants={container}
         initial='hidden'
         animate='show'
         className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'
       >
-        {filteredImages.map((image, index) => (
+        {filteredImages.map((image) => (
           <motion.div
-            key={`${image.title}-${index}`}
+            key={image.id}
             variants={item}
             className='group relative aspect-square overflow-hidden rounded-lg cursor-pointer'
             onClick={() => setSelectedImage(image)}
           >
             <img
               src={image.image}
-              alt={image.alt || image.title}
+              alt={image.alt}
               className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-110'
             />
             <div className='absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center'>
@@ -93,6 +95,13 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
                     {image.category}
                   </span>
                 )}
+                {image.featured && (
+                  <div className='mt-2'>
+                    <span className='text-xs bg-yellow-500 px-2 py-1 rounded'>
+                      Featured
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
           </motion.div>
@@ -101,13 +110,11 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
 
       {filteredImages.length === 0 && (
         <div className='text-center py-8'>
-          <p className='text-gray-500'>
-            Aucune image trouvée pour cette catégorie.
-          </p>
+          <p className='text-gray-500'>No images found for this category.</p>
         </div>
       )}
 
-      {/* Modal pour l'image sélectionnée */}
+      {/* Modal for selected image */}
       {selectedImage && (
         <div
           className='fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4'
@@ -123,7 +130,7 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
             <div className='relative'>
               <img
                 src={selectedImage.image}
-                alt={selectedImage.alt || selectedImage.title}
+                alt={selectedImage.alt}
                 className='w-full max-h-[70vh] object-contain'
               />
               <button
@@ -153,13 +160,20 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
                 </p>
               )}
               <div className='flex items-center justify-between'>
-                {selectedImage.category && (
-                  <span className='bg-primary text-white px-3 py-1 rounded-full text-sm'>
-                    {selectedImage.category}
-                  </span>
-                )}
+                <div className='flex gap-2'>
+                  {selectedImage.category && (
+                    <span className='bg-primary text-white px-3 py-1 rounded-full text-sm'>
+                      {selectedImage.category}
+                    </span>
+                  )}
+                  {selectedImage.featured && (
+                    <span className='bg-yellow-500 text-white px-3 py-1 rounded-full text-sm'>
+                      Featured
+                    </span>
+                  )}
+                </div>
                 <span className='text-sm text-gray-500'>
-                  {new Date(selectedImage.date).toLocaleDateString('fr-FR')}
+                  {new Date(selectedImage.date).toLocaleDateString('en-US')}
                 </span>
               </div>
             </div>

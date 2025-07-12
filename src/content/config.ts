@@ -11,7 +11,6 @@ const galleryCollection = defineCollection({
       .string()
       .refine(
         (date) => {
-          // Valide que la string peut être convertie en date
           return !isNaN(Date.parse(date));
         },
         {

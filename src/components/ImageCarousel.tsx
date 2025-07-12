@@ -2,16 +2,19 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Eye } from 'lucide-react';
 import { useState } from 'react';
 
-interface Image {
+interface GalleryImage {
+  id: string;
   title: string;
-  description?: string;
+  description: string;
   image: string;
-  alt?: string;
-  category?: string;
+  alt: string;
+  category: string;
+  date: string;
+  featured: boolean;
 }
 
 interface ImageCarouselProps {
-  images: Image[];
+  images: GalleryImage[];
 }
 
 export default function ImageCarousel({ images }: ImageCarouselProps) {
@@ -56,7 +59,7 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
           >
             <img
               src={images[currentIndex].image}
-              alt={images[currentIndex].alt || images[currentIndex].title}
+              alt={images[currentIndex].alt}
               className='w-full h-full object-cover'
             />
             <div className='absolute inset-0 bg-black bg-opacity-40 flex items-end'>
@@ -121,7 +124,7 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
       {/* Bouton voir plus */}
       <div className='text-center mt-6'>
         <a
-          href='/galery'
+          href='/gallery'
           className='inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-full hover:bg-secondary transition-colors duration-300 font-medium'
         >
           <Eye className='w-5 h-5' />
