@@ -1,4 +1,4 @@
-import { ChevronDownIcon, ChevronUpIcon } from "@assets/icons"; 
+import { ChevronDown, ChevronUp } from "lucide-react"; 
 import { useState } from "react";
 
 
@@ -18,8 +18,8 @@ export default function Paragraph({ text, maxLength = 400 }: { text: string; max
           onClick={() => setExpanded(!expanded)}
           className="font-semibold hover:underline mt-2"
         >
-            <div className="flex">
-                {expanded ? <>{ChevronUpIcon} Lire moins</> : <>{ChevronDownIcon} Lire Plus</>}
+            <div className="flex items-center gap-1">
+                {expanded ? <><ChevronUp className="w-4 h-4" /> Lire moins</> : <><ChevronDown className="w-4 h-4" /> Lire Plus</>}
             </div>
         </button>
       </>)}

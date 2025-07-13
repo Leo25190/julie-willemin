@@ -3,15 +3,8 @@ const {
   title = 'Julie Willemin',
   description = 'Julie Willemin, étudiante à l\'ICART en management culturel',
 } = Astro.props;
-import '@fontsource/poppins/100.css';
-import '@fontsource/poppins/200.css';
-import '@fontsource/poppins/300.css';
 import '@fontsource/poppins/400.css';
-import '@fontsource/poppins/500.css';
 import '@fontsource/poppins/600.css';
-import '@fontsource/poppins/700.css';
-import '@fontsource/poppins/800.css';
-import '@fontsource/poppins/900.css';
 import { ClientRouter } from 'astro:transitions';
 import { isTransitionEnabled } from '../data';
 import '../styles/app.css';
@@ -26,6 +19,27 @@ import '../styles/styles.css';
     <meta name='generator' content={Astro.generator} />
     <meta name='description' content={description} />
     <link rel='sitemap' href='/sitemap-index.xml' />
+    
+    <!-- Preload critical fonts -->
+    <link rel='preload' href='/_astro/poppins-latin-400-normal.woff2' as='font' type='font/woff2' crossorigin />
+    <link rel='preload' href='/_astro/poppins-latin-600-normal.woff2' as='font' type='font/woff2' crossorigin />
+    
+    <!-- DNS prefetch for external domains -->
+    <link rel='dns-prefetch' href='//i.imgur.com' />
+    
+    <!-- Preconnect to critical third-party origins -->
+    <link rel='preconnect' href='https://i.imgur.com' crossorigin />
+    
+    <!-- Module preload for critical JavaScript -->
+    <link rel='modulepreload' href='/_astro/jsx-runtime.ClP7wGfN.js' />
+    <link rel='modulepreload' href='/_astro/client.BXWm451Q.js' />
+    <link rel='modulepreload' href='/_astro/index.DK-fsZOb.js' />
+    <link rel='modulepreload' href='/_astro/Navbar.BXzNt18m.js' />
+    
+    <!-- Preload other critical resources -->
+    <link rel='preload' href='/_astro/gallery.YiV8fc64.css' as='style' />
+    <link rel='preload' href='/_astro/createLucideIcon.C3ra-Qy0.js' as='script' />
+
     <title>{title}</title>
     {isTransitionEnabled && <ClientRouter />}
   </head>
