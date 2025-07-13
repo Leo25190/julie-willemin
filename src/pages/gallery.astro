@@ -29,7 +29,7 @@ const images = await notionService.getGalleryImages(databaseId, 'h');
         </p>
       </header>
 
-      <GalleryGrid client:load images={images} />
+      <GalleryGrid client:visible images={images} />
 
       {images.length === 0 && (
         <div class="text-center py-16">

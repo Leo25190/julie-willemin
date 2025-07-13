@@ -1,0 +1,16 @@
+---
+import { Icon } from '@lucide/astro';
+
+const { href, label } = Astro.props;
+---
+
+<a
+  href={href}
+  class='group cursor-pointer flex w-full p-5 items-center justify-between transition duration-300 hover:text-secondary border-b-2 hover:border-secondary hover:font-semibold'
+>
+  <p>{label}</p>
+  <Icon 
+    name="arrow-right" 
+    class='size-6 hidden group-hover:block transition duration-0'
+  />
+</a>

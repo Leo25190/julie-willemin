@@ -1,17 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Eye } from 'lucide-react';
 import { useState, useEffect } from 'react';
-
-interface GalleryImage {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  alt: string;
-  category: string;
-  date: string;
-  featured: boolean;
-}
+import type { GalleryImage } from '../types';
 
 interface ImageCarouselProps {
   images: GalleryImage[];

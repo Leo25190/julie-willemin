@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base styles */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Hide scrollbars */
+*::-webkit-scrollbar {
+  display: none !important;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 /* Variables CSS pour thèmes */
 :root {
   --color-primary: #156064; /* bleu clair */

@@ -19,10 +19,6 @@ Je poursuis désormais un cursus d’ingénierie culturelle, avec une spécialis
 Je souhaite m’ancrer pleinement dans cet environnement où la créativité et l’organisation se rencontrent pour donner vie à des moments magiques.
 `;
 
-// A sub text for writing/blog section
-export const blogText = `J’ai créé cet espace pour vous partager ce qui m’inspire. SPECTACLE VIVANT, MUSIQUE, ART, CINÉMA, en passant par mes VOYAGES, mes ACTIVITÉS SPORTIVES et mon amour inconditionnel pour les ANIMAUX… Ce blog est un rideau ouvert sur mon univers.
-À travers des articles illustrés de photos et de vidéos, je vous raconte avec authenticité des découvertes et des expériences marquantes, ainsi que des croyances, qui font de moi celle que je suis. Une personne vraie, sensible, passionnée, positive, curieuse, raisonnée…`;
-
 // A sub text for contact section
 
 export const contactText = `Que ce soit pour échanger sur nos passions, discuter de projets artistiques, me poser des questions ou me conseiller, je serais ravie de vous lire ! N’hésitez pas à me contacter.`;

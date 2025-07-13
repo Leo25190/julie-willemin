@@ -1,17 +1,7 @@
 import { motion } from 'framer-motion';
 import { X } from 'lucide-react';
-import { useState } from 'react';
-
-interface GalleryImage {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  alt: string;
-  category: string;
-  date: string;
-  featured: boolean;
-}
+import { useState, useRef, useEffect } from 'react';
+import type { GalleryImage } from '../types';
 
 interface GalleryGridProps {
   images: GalleryImage[];
@@ -80,13 +70,18 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
           <motion.div
             key={image.id}
             variants={item}
-            className='group relative aspect-square overflow-hidden rounded-lg cursor-pointer'
+            className='group relative aspect-square overflow-hidden rounded-lg cursor-pointer bg-gray-200 dark:bg-gray-700'
             onClick={() => setSelectedImage(image)}
           >
             <img
               src={image.image}
               alt={image.alt}
-              className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-110'
+              className='w-full h-full object-cover transition-all duration-300 group-hover:scale-110 opacity-0'
+              loading='lazy'
+              decoding='async'
+              onLoad={(e) => {
+                e.currentTarget.style.opacity = '1';
+              }}
             />
             <div className='absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center'>
               <div className='text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4'>

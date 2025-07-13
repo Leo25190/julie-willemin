@@ -1,9 +1,9 @@
 ---
-import SelectedProjectItem from './SelectedProjectItem.astro';
+import LinkItem from './LinkItem.astro';
 
 const { projects = {} } = Astro.props;
 ---
 
 <div class='flex flex-col p-1'>
-  {projects.map((project) => <SelectedProjectItem project={project} />)}
+  {projects.map((project) => <LinkItem href={project.link} label={project.name} />)}
 </div>
