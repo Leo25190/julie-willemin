@@ -9,9 +9,9 @@ import MainLayout from '../layouts/MainLayout.astro';
 import { notionService } from '../services/notion';
 import '../styles/app.css';
 
-// Get featured images from Notion
+// Get featured images from Notion with medium size for faster loading
 const databaseId = import.meta.env.NOTION_GALLERY_DATABASE_ID;
-const featuredImages = await notionService.getFeaturedImages(databaseId);
+const featuredImages = await notionService.getFeaturedImages(databaseId, 'original');
 ---
 
 <MainLayout>

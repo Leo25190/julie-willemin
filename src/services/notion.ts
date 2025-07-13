@@ -27,6 +27,26 @@ export interface NotionResponse {
 // Generic type for extracted data
 export type ExtractedData = Record<string, any>;
 
+// Imgur size suffixes for different image sizes
+export type ImgurSize = 's' | 't' | 'm' | 'l' | 'h' | 'original';
+
+// Utility function to transform imgur URLs with size parameter
+function transformImgurUrl(url: string, size: ImgurSize = 'original'): string {
+  if (!url || size === 'original') return url;
+  
+  // Check if it's an imgur URL
+  const imgurRegex = /^https?:\/\/(i\.)?imgur\.com\/([a-zA-Z0-9]+)(\.[a-zA-Z]+)?$/;
+  const match = url.match(imgurRegex);
+  
+  if (match) {
+    const imageId = match[2];
+    const extension = match[3] || '.jpg';
+    return `https://i.imgur.com/${imageId}${size}${extension}`;
+  }
+  
+  return url;
+}
+
 // Property extractors configuration by type
 const propertyExtractors = {
   title: (property: NotionProperty) => property.title?.[0]?.plain_text || '',
@@ -109,7 +129,7 @@ export class NotionService {
   }
 
   // Specific method for gallery
-  async getGalleryImages(databaseId: string): Promise<GalleryImage[]> {
+  async getGalleryImages(databaseId: string, imgurSize: ImgurSize = 'original'): Promise<GalleryImage[]> {
     const data = await this.queryDatabase(databaseId, {
       sorts: [{ property: 'Date', direction: 'descending' }],
     });
@@ -118,7 +138,7 @@ export class NotionService {
       id: item.id,
       title: item.Titre || '',
       description: item.Description || '',
-      image: item.Image || '',
+      image: transformImgurUrl(item.Image || '', imgurSize),
       alt: item.Titre || '',
       category: item.Category || '',
       date: item.Date || '',
@@ -127,7 +147,7 @@ export class NotionService {
   }
 
   // Method to get featured images only
-  async getFeaturedImages(databaseId: string): Promise<GalleryImage[]> {
+  async getFeaturedImages(databaseId: string, imgurSize: ImgurSize = 'original'): Promise<GalleryImage[]> {
     const data = await this.queryDatabase(databaseId, {
       filter: {
         property: 'Featured',
@@ -142,7 +162,7 @@ export class NotionService {
       id: item.id,
       title: item.Titre || '',
       description: item.Description || '',
-      image: item.Image || '',
+      image: transformImgurUrl(item.Image || '', imgurSize),
       alt: item.Titre || '',
       category: item.Category || '',
       date: item.Date || '',

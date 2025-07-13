@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Eye } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface GalleryImage {
   id: string;
@@ -19,6 +19,34 @@ interface ImageCarouselProps {
 
 export default function ImageCarousel({ images }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set([0]));
+
+  // Preload current, next, and previous images
+  useEffect(() => {
+    const imagesToLoad = new Set<number>();
+    
+    // Always load current image
+    imagesToLoad.add(currentIndex);
+    
+    // Load next image
+    const nextIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
+    imagesToLoad.add(nextIndex);
+    
+    // Load previous image
+    const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+    imagesToLoad.add(prevIndex);
+
+    // Update loaded images state
+    setLoadedImages(prev => new Set([...prev, ...imagesToLoad]));
+
+    // Preload the images
+    imagesToLoad.forEach(index => {
+      if (images[index] && !loadedImages.has(index)) {
+        const img = new Image();
+        img.src = images[index].image;
+      }
+    });
+  }, [currentIndex, images, loadedImages]);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
@@ -61,6 +89,8 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
               src={images[currentIndex].image}
               alt={images[currentIndex].alt}
               className='w-full h-full object-cover'
+              loading={loadedImages.has(currentIndex) ? 'eager' : 'lazy'}
+              onLoad={() => setLoadedImages(prev => new Set([...prev, currentIndex]))}
             />
             <div className='absolute inset-0 bg-black bg-opacity-40 flex items-end'>
               <div className='p-4 text-white w-full'>
