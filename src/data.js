@@ -3,25 +3,6 @@ export const isTransitionEnabled = true; // for enabling view transitions
 export const myName = 'Julie Willemin'; // For name in main intro text
 
 export const navLogoText = 'Julie Willemin'; // navbar left-most logo text
-// bio for main section
-
-export const myBio = `Moi, c’est Julie. J’aime assister à des spectacles, des concerts et des comédies musicales. J’adore les animaux, en particulier les félins : du chat domestique au tigre, tous me fascinent.
-Côté sport, je danse depuis quinze ans. La danse est pour moi un véritable moyen d’expression, qui m’a permis de gagner en confiance et d’atténuer ma timidité. J’ai aussi beaucoup pratiqué la natation, et aujourd’hui, je me suis mise à la course à pied.
-Une autre de mes passions, c’est le voyage. Les pays asiatiques m’attirent pour leur richesse culturelle, et les pays scandinaves pour leur nature apaisante.
-Mes ami·es me comparent souvent à un petit soleil, car mon énergie et mon sourire leur font du bien.
-Et pour finir, ma couleur préférée est le bleu, sans doute parce que je suis une grande rêveuse, un peu comme dans les contes de fées.
-`;
-
-// about me text for about section
-
-export const aboutMe = `Après une licence de Droit, Économie, Gestion à l’ECM, où j’ai acquis des compétences en communication et en gestion financière, j’ai choisi de me réorienter par passion vers le secteur culturel.
-Je poursuis désormais un cursus d’ingénierie culturelle, avec une spécialisation en spectacle vivant à l’ICART. J’apprécie particulièrement les projets concrets auxquels l’école nous confronte, ainsi que les stages que nous devons effectuer. Ces expériences nous permettent de développer les compétences nécessaires à la création et à la réalisation d’un événement culturel.
-Je souhaite m’ancrer pleinement dans cet environnement où la créativité et l’organisation se rencontrent pour donner vie à des moments magiques.
-`;
-
-// A sub text for contact section
-
-export const contactText = `Que ce soit pour échanger sur nos passions, discuter de projets artistiques, me poser des questions ou me conseiller, je serais ravie de vous lire ! N’hésitez pas à me contacter.`;
 
 // Links to put in the navigation bar as well as footer at bottom of the page
 

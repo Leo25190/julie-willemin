@@ -1,10 +1,9 @@
 export interface GalleryImage {
   id: string;
   title: string;
-  description: string;
   image: string;
   alt: string;
-  category: string;
+  tags: string[];
   date: string;
   featured: boolean;
 }

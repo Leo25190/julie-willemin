@@ -90,15 +90,17 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
                 <h3 className='text-lg md:text-xl font-semibold mb-1'>
                   {images[currentIndex].title}
                 </h3>
-                {images[currentIndex].description && (
-                  <p className='text-sm md:text-base opacity-90'>
-                    {images[currentIndex].description}
-                  </p>
-                )}
-                {images[currentIndex].category && (
-                  <span className='inline-block mt-2 px-2 py-1 bg-primary rounded text-xs'>
-                    {images[currentIndex].category}
-                  </span>
+                {images[currentIndex].tags.length > 0 && (
+                  <div className='flex flex-wrap gap-1 mt-2'>
+                    {images[currentIndex].tags.map((tag, index) => (
+                      <span 
+                        key={index}
+                        className='inline-block px-2 py-1 bg-primary rounded text-xs'
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 )}
               </div>
             </div>

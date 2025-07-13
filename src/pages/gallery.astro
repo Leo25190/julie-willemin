@@ -4,11 +4,11 @@ import GalleryGrid from '../components/GalleryGrid';
 import Navbar from '../components/Navbar';
 import { navLinks } from '../data';
 import MainLayout from '../layouts/MainLayout.astro';
-import { notionService } from '../services/notion';
+import { notionGalleryService } from '../services/notion-services';
 
 // Get images from Notion
 const databaseId = import.meta.env.NOTION_GALLERY_DATABASE_ID;
-const images = await notionService.getGalleryImages(databaseId, 'h');
+const images = await notionGalleryService.getGalleryImages(databaseId, 'h');
 ---
 
 <MainLayout 

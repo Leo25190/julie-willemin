@@ -4,13 +4,17 @@ import AboutSection from '../components/sections/AboutSection.astro';
 import ContactSection from '../components/sections/ContactSection.astro';
 import GallerySection from '../components/sections/GallerySection.astro';
 import MainSection from '../components/sections/MainSection.astro';
-import { aboutMe, contactOptions, contactText, myBio, myName, navLinks, selectedProjects, skills, workExperiences } from '../data';
+import { contactOptions, myName, navLinks, selectedProjects, skills, workExperiences } from '../data';
+import { getDynamicContent } from '../data/dynamic.js';
 import MainLayout from '../layouts/MainLayout.astro';
-import { notionService } from '../services/notion';
+import { notionGalleryService } from '../services/notion-services';
 
 // Get featured images from Notion with medium size for faster loading
 const databaseId = import.meta.env.NOTION_GALLERY_DATABASE_ID;
-const featuredImages = await notionService.getFeaturedImages(databaseId, 'h');
+const featuredImages = await notionGalleryService.getFeaturedImages(databaseId, 'h');
+
+// Get dynamic content from Notion
+const { myBio, aboutMe, contactText } = await getDynamicContent();
 ---
 
 <MainLayout>
