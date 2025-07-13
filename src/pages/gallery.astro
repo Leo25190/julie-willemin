@@ -8,7 +8,7 @@ import { notionService } from '../services/notion';
 
 // Get images from Notion
 const databaseId = import.meta.env.NOTION_GALLERY_DATABASE_ID;
-const images = await notionService.getGalleryImages(databaseId);
+const images = await notionService.getGalleryImages(databaseId, 'h');
 ---
 
 <MainLayout 

@@ -23,7 +23,7 @@ export default function Navbar({ navLinks }) {
     show: { opacity: 1, x: 0 },
   };
   return (
-    <nav className='fixed top-0 left-0 w-full bg-background bg-opacity-80 backdrop-blur-xl'>
+    <nav className='fixed top-0 left-0 w-full bg-background bg-opacity-80 backdrop-blur-xl z-40'>
       <div className='flex justify-between items-center p-5 z-'>
         <a href='/' className='logo text-md font-bold relative group'>
           {navLogoText ? navLogoText : 'julie-willemin'}
@@ -70,7 +70,7 @@ export default function Navbar({ navLinks }) {
         </motion.div>
       </div>
       {isToggled && (
-        <motion.div className='md:hidden fixed top-0 left-0 w-screen h-screen flex flex-col justify-center items-center z-30 bg-background'>
+        <motion.div className='md:hidden fixed top-0 left-0 w-screen h-screen flex flex-col justify-center items-center z-40 bg-background'>
           <motion.ul
             className='flex md:hidden flex-col items-center gap-3'
             variants={container}

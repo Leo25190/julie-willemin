@@ -37,16 +37,19 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
     imagesToLoad.add(prevIndex);
 
     // Update loaded images state
-    setLoadedImages(prev => new Set([...prev, ...imagesToLoad]));
+    setLoadedImages(prev => {
+      const newSet = new Set([...prev, ...imagesToLoad]);
+      return newSet;
+    });
 
     // Preload the images
     imagesToLoad.forEach(index => {
-      if (images[index] && !loadedImages.has(index)) {
+      if (images[index]) {
         const img = new Image();
         img.src = images[index].image;
       }
     });
-  }, [currentIndex, images, loadedImages]);
+  }, [currentIndex, images]);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
