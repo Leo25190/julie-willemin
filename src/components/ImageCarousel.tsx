@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Eye } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import type { GalleryImage } from '../types';
 
 interface ImageCarouselProps {
@@ -14,26 +14,26 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
   // Preload current, next, and previous images
   useEffect(() => {
     const imagesToLoad = new Set<number>();
-    
+
     // Always load current image
     imagesToLoad.add(currentIndex);
-    
+
     // Load next image
     const nextIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
     imagesToLoad.add(nextIndex);
-    
+
     // Load previous image
     const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
     imagesToLoad.add(prevIndex);
 
     // Update loaded images state
-    setLoadedImages(prev => {
+    setLoadedImages((prev) => {
       const newSet = new Set([...prev, ...imagesToLoad]);
       return newSet;
     });
 
     // Preload the images
-    imagesToLoad.forEach(index => {
+    imagesToLoad.forEach((index) => {
       if (images[index]) {
         const img = new Image();
         img.src = images[index].image;
@@ -83,7 +83,9 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
               alt={images[currentIndex].alt}
               className='w-full h-full object-cover'
               loading={loadedImages.has(currentIndex) ? 'eager' : 'lazy'}
-              onLoad={() => setLoadedImages(prev => new Set([...prev, currentIndex]))}
+              onLoad={() =>
+                setLoadedImages((prev) => new Set([...prev, currentIndex]))
+              }
             />
             <div className='absolute inset-0 bg-black bg-opacity-40 flex items-end'>
               <div className='p-4 text-white w-full'>
@@ -93,7 +95,7 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
                 {images[currentIndex].tags.length > 0 && (
                   <div className='flex flex-wrap gap-1 mt-2'>
                     {images[currentIndex].tags.map((tag, index) => (
-                      <span 
+                      <span
                         key={index}
                         className='inline-block px-2 py-1 bg-primary rounded text-xs'
                       >
