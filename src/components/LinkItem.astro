@@ -1,5 +1,5 @@
 ---
-import { Icon } from '@lucide/astro';
+import { Icon } from 'astro-icon/components';
 
 const { href, label } = Astro.props;
 ---
@@ -10,7 +10,7 @@ const { href, label } = Astro.props;
 >
   <p>{label}</p>
   <Icon 
-    name="arrow-right" 
+    name="mdi:arrow-right" 
     class='size-6 hidden group-hover:block transition duration-0'
   />
 </a>

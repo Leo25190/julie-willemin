@@ -4,34 +4,55 @@ import AboutSection from '../components/sections/AboutSection.astro';
 import ContactSection from '../components/sections/ContactSection.astro';
 import GallerySection from '../components/sections/GallerySection.astro';
 import MainSection from '../components/sections/MainSection.astro';
-import { contactOptions, myName, navLinks, selectedProjects, skills, workExperiences } from '../data';
+import { contactOptions, myName, skills } from '../data';
 import { getDynamicContent } from '../data/dynamic.js';
 import MainLayout from '../layouts/MainLayout.astro';
-import { notionGalleryService } from '../services/notion-services';
+import { notionActivitiesService, notionGalleryService } from '../services/notion-services';
 
 // Get featured images from Notion with medium size for faster loading
-const databaseId = import.meta.env.NOTION_GALLERY_DATABASE_ID;
-const featuredImages = await notionGalleryService.getFeaturedImages(databaseId, 'h');
+const featuredImages = await notionGalleryService.getFeaturedImages('h');
 
 // Get dynamic content from Notion
 const { myBio, aboutMe, contactText } = await getDynamicContent();
+
+// Get Activities from Notion
+const activities = await notionActivitiesService.getActivities();
+const [projets, benevolat] = [
+  activities.filter((a) => a.type.includes('Projet')),
+  activities.filter((a) => a.type.includes('Bénévolat'))
+];
+const experiences = activities.filter((a) => 
+  a.type.includes('Expérience Professionnelle')
+).slice(0, 3); // Limit to 3 most recent experiences
+
+// Map to existing components' props
+const selectedProjects = projets.map((a) => ({
+  name: a.name,
+  link: `/activities?type=projet#${a.slug}`,
+}));
+
+const volunteerProjects = benevolat.map((a) => ({
+  name: a.name,
+  link: `/activities?type=benevolat#${a.slug}`,
+}));
+
 ---
 
 <MainLayout>
   <MainSection
-    navLinks={navLinks}
     myName={myName}
     myBio={myBio}
     selectedProjects={selectedProjects}
+    volunteerProjects={volunteerProjects}
   />
   <AboutSection
     aboutMe={aboutMe}
     skills={skills}
-    workExperiences={workExperiences}
+    workExperiences={experiences}
   />
   {featuredImages.length > 0 && (
     <GallerySection featuredImages={featuredImages} />
   )}
   <ContactSection contactText={contactText} contactOptions={contactOptions} />
-  <Footer navLinks={navLinks} />
+  <Footer />
 </MainLayout>

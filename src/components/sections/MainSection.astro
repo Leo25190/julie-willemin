@@ -1,15 +1,16 @@
 ---
-import Navbar from '../Navbar';
 import Paragraph from '../Paragraph';
 import Section from '../Section.astro';
 import SelectedProjectBox from '../SelectedProjectBox.astro';
-const { navLinks, myName, myBio, selectedProjects } = Astro.props;
+const { myName, myBio, selectedProjects = [], volunteerProjects = [] } = Astro.props;
+
+// Combine projects for display
+const allProjects = [...selectedProjects, ...volunteerProjects];
 ---
 
 <Section styles='p-1'>
-  <Navbar navLinks={navLinks} client:load />
   <div
-    class='mt-[3rem] md:mt-3 flex flex-col md:flex-row basis-0 gap-1 md:justify-between md:gap-[5rem] items-center w-full min-h-[80vh] md:min-h-[85vh]'
+    class='mt-8 md:mt-12 flex flex-col md:flex-row basis-0 gap-1 md:justify-between md:gap-[5rem] items-center w-full min-h-[80vh] md:min-h-[85vh]'
   >
     <div class='introduction w-[100%] md:w-[60%] p-5'>
       <div class='intro-text-box'>
@@ -27,7 +28,7 @@ const { navLinks, myName, myBio, selectedProjects } = Astro.props;
       <h3 class='text-secondary heading uppercase font-semibold ml-4'>
         Projets et Bénévolat
       </h3>
-      <SelectedProjectBox projects={selectedProjects} />
+      <SelectedProjectBox projects={allProjects} />
     </div>
-  </div></Section
->
+  </div>
+</Section>

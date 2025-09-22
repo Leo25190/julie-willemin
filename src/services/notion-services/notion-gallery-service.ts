@@ -27,10 +27,16 @@ export class NotionGalleryService extends NotionBaseService {
     return {
       id: page.id,
       title: page.properties.Titre?.title?.[0]?.plain_text || '',
-      image: this.transformImgurUrl(page.properties.Image?.url || '', imgurSize),
+      image: this.transformImgurUrl(
+        page.properties.Image?.url || '',
+        imgurSize
+      ),
       alt: page.properties.Titre?.title?.[0]?.plain_text || '',
-      tags: page.properties.Category?.rich_text?.[0]?.plain_text 
-        ? page.properties.Category.rich_text[0].plain_text.split(',').map((tag: string) => tag.trim()).filter(Boolean)
+      tags: page.properties.Category?.rich_text?.[0]?.plain_text
+        ? page.properties.Category.rich_text[0].plain_text
+            .split(',')
+            .map((tag: string) => tag.trim())
+            .filter(Boolean)
         : [],
       date: page.properties.Date?.date?.start || '',
       featured: page.properties.Featured?.checkbox || false,
@@ -39,15 +45,21 @@ export class NotionGalleryService extends NotionBaseService {
 
   // Get all gallery images
   async getGalleryImages(
-    databaseId: string,
     imgurSize: ImgurSize = 'original'
   ): Promise<GalleryImage[]> {
+    const databaseId = import.meta.env.NOTION_GALLERY_DATABASE_ID;
+    if (!databaseId) {
+      throw new Error(
+        'NOTION_GALLERY_DATABASE_ID environment variable is not set'
+      );
+    }
+
     try {
       const response = await this.queryDatabase(databaseId, {
         sorts: [{ property: 'Date', direction: 'descending' }],
       });
 
-      return response.results.map((page: any) => 
+      return response.results.map((page: any) =>
         this.mapPageToGalleryImage(page, imgurSize)
       );
     } catch (error) {
@@ -58,9 +70,15 @@ export class NotionGalleryService extends NotionBaseService {
 
   // Get featured images only
   async getFeaturedImages(
-    databaseId: string,
     imgurSize: ImgurSize = 'original'
   ): Promise<GalleryImage[]> {
+    const databaseId = import.meta.env.NOTION_GALLERY_DATABASE_ID;
+    if (!databaseId) {
+      throw new Error(
+        'NOTION_GALLERY_DATABASE_ID environment variable is not set'
+      );
+    }
+
     try {
       const response = await this.queryDatabase(databaseId, {
         filter: {
@@ -72,7 +90,7 @@ export class NotionGalleryService extends NotionBaseService {
         sorts: [{ property: 'Date', direction: 'descending' }],
       });
 
-      return response.results.map((page: any) => 
+      return response.results.map((page: any) =>
         this.mapPageToGalleryImage(page, imgurSize)
       );
     } catch (error) {

@@ -1,22 +1,75 @@
 ---
 const { workExperience } = Astro.props;
+
+// Helper function to format date range
+function formatDateRange(dates: { start: string; end?: string }): string {
+  const { start, end } = dates;
+  
+  const formatSingleDate = (dateStr: string) => {
+    if (!dateStr) return '';
+    const date = new Date(dateStr);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    return `${year}.${month}`;
+  };
+  
+  if (!start && !end) return '';
+  if (!end) return formatSingleDate(start);
+  return `${formatSingleDate(start)} - ${formatSingleDate(end)}`;
+}
+
+// Function to process summary into clean list items
+function processSummaryItems(summary: string): string[] {
+  return summary
+    .split(/\r?\n/)
+    .map((l) => {
+      // Remove leading non-alphanumeric characters (bullets, dashes, etc.)
+      return l.replace(/^[^a-zA-Z0-9]+/, '').trim();
+    })
+    .filter(Boolean)
+    .slice(0, 3); // Limit to 3 lines maximum
+}
+
+// Check if content is truncated
+function isContentTruncated(summary: string): boolean {
+  const allItems = summary
+    .split(/\r?\n/)
+    .map((l) => l.replace(/^[^a-zA-Z0-9]+/, '').trim())
+    .filter(Boolean);
+  return allItems.length > 3;
+}
+
+// Generate timeline link
+const timelineLink = `/activities#${workExperience.slug}`;
+const items = processSummaryItems(workExperience.summary);
+const isTruncated = isContentTruncated(workExperience.summary);
 ---
 
-<div
-  class='group cursor-pointer flex flex-col w-full p-5 transition duration-300 group hover:text-secondary border-b-2 hover:border-secondary'
+<a
+  href={timelineLink}
+  class='group cursor-pointer flex flex-col w-full p-5 transition-all duration-300 hover:text-secondary border-b-2 hover:border-secondary'
 >
   <div class='flex justify-between items-center'>
     <div class='flex flex-col gap-1'>
-      <span class='font-bold'>{workExperience.organisationName} </span>
-      <span class='font-light text-xs group-hover:text-secondary'>
-        {workExperience.position}
+      <span class='font-bold group-hover:text-secondary transition-all duration-300'>{workExperience.name}</span>
+      <span class='font-light text-xs group-hover:text-secondary transition-all duration-300'>
+        {workExperience.location}
       </span>
     </div>
-    <span class='font-light text-sm group-hover:text-secondary'
-      >{workExperience.date}</span
-    >
+    <span class='font-light text-sm group-hover:text-secondary transition-all duration-300'>
+      {formatDateRange(workExperience.dates)}
+    </span>
   </div>
-  <ul class='mt-1 p-2 ml-3 list-disc'>
-    {workExperience.info.map((info) => <li>{info}</li>)}
+  <ul class='mt-3 p-2 ml-3 list-disc text-sm text-gray-700 dark:text-gray-300 leading-relaxed'>
+    {items.map((item) => (
+      <li class='group-hover:text-secondary transition-all duration-300'>{item}</li>
+    ))}
   </ul>
-</div>
+  {isTruncated && (
+    <div class='mt-2 ml-3'>
+      <span class='text-xs text-gray-500 group-hover:text-secondary transition-all duration-300 italic'>
+        voir plus →
+      </span>
+    </div>
+  )}
+</a>

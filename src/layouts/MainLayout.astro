@@ -3,10 +3,12 @@ const {
   title = 'Julie Willemin',
   description = 'Julie Willemin, étudiante à l\'ICART en management culturel',
 } = Astro.props;
+import Navbar from '@components/Navbar';
+import Section from '@components/Section.astro';
 import '@fontsource/poppins/400.css';
 import '@fontsource/poppins/600.css';
 import { ClientRouter } from 'astro:transitions';
-import { isTransitionEnabled } from '../data';
+import { isTransitionEnabled, navLinks } from '../data';
 import '../styles/app.css';
 ---
 
@@ -29,6 +31,11 @@ import '../styles/app.css';
     {isTransitionEnabled && <ClientRouter />}
   </head>
   <body>
-    <slot />
+    <Section>
+      <Navbar navLinks={navLinks} client:load />
+    </Section>
+    <main class="pt-20 md:pt-24">
+      <slot />
+    </main>
   </body>
 </html>

@@ -1,0 +1,73 @@
+---
+const { activities = [], title = "Activités" } = Astro.props;
+
+// Helper function to format date range
+function formatDateRange(dates: { start: string; end?: string }): string {
+  const { start, end } = dates;
+  if (!start && !end) return '';
+  if (!end) return start;
+  return `${start} - ${end}`;
+}
+
+// Get type color based on activity type
+function getTypeColor(type: string[]): string {
+  if (type.includes('Projet')) return 'bg-pink-500';
+  if (type.includes('Bénévolat')) return 'bg-red-500';
+  if (type.includes('Expérience professionnelle') || type.includes('Expérience Professionnelle')) return 'bg-purple-500';
+  return 'bg-secondary';
+}
+---
+
+<div class="w-full">
+  <h2 class="text-xl font-semibold mb-4">{title}</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {activities.map((activity) => (
+      <div class="bg-background border border-secondary rounded-lg p-4 hover:shadow-lg transition-shadow duration-300">
+        <div class="flex items-start justify-between mb-2">
+          <h3 class="font-medium text-text line-clamp-2 flex-1">{activity.name}</h3>
+          <div class={`ml-2 px-2 py-1 rounded-full text-xs text-white font-medium ${getTypeColor(activity.type)}`}>
+            {activity.type[0]}
+          </div>
+        </div>
+        
+        {activity.dates && (
+          <p class="text-sm text-gray-600 mb-2">
+            {formatDateRange(activity.dates)}
+          </p>
+        )}
+        
+        {activity.location && (
+          <p class="text-sm text-gray-500 mb-3">
+            📍 {activity.location}
+          </p>
+        )}
+        
+        {activity.summary && (
+          <div class="text-sm text-gray-700 line-clamp-3">
+            {activity.summary.split(/\r?\n/).slice(0, 3).map((line) => (
+              <p class="mb-1">
+                {line.replace(/^\s*[-•]\s*/, '').trim()}
+              </p>
+            ))}
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+</style>

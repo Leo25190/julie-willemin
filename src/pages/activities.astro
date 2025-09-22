@@ -1,0 +1,35 @@
+---
+import Footer from '../components/Footer.astro';
+import Timeline from '../components/Timeline.astro';
+import MainLayout from '../layouts/MainLayout.astro';
+import { notionActivitiesService } from '../services/notion-services';
+
+const activities = await notionActivitiesService.getActivities();
+
+// Sort activities chronologically (most recent first)
+// The service already sorts by 'Début' descending, but let's ensure it's sorted properly
+const sortedActivities = activities.sort((a, b) => {
+  const dateA = new Date(a.dates.start);
+  const dateB = new Date(b.dates.start);
+  return dateB.getTime() - dateA.getTime(); // Most recent first
+});
+---
+
+<MainLayout>
+  <!-- Page Header -->
+  <div class="max-w-4xl mx-auto px-4 pt-4">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        Mon Parcours
+      </h1>
+      <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        Découvrez mes expériences, projets et activités bénévoles.
+      </p>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <Timeline activities={sortedActivities} />
+  
+  <Footer />
+</MainLayout>
