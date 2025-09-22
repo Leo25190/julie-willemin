@@ -7,8 +7,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 import { notionGalleryService } from '../services/notion-services';
 
 // Get images from Notion
-const databaseId = import.meta.env.NOTION_GALLERY_DATABASE_ID;
-const images = await notionGalleryService.getGalleryImages(databaseId, 'h');
+const images = await notionGalleryService.getGalleryImages('h');
 ---
 
 <MainLayout 
